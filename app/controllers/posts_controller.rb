@@ -18,4 +18,17 @@ class PostsController < ApplicationController
 	  @post.save
 	  redirect_to post_path(@post)
 	end
+
+	def edit
+  	  @post = Post.find(params[:id])
+	end
+ 
+	def update
+	  @post = Post.find(params[:id])
+	  #querying database for correct ID and store in instance variable
+  	  @post.update(title: params[:title], description: params[:description])
+  	  #update each param and save
+  	  redirect_to post_path(@post)
+	end
+
 end
